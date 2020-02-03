@@ -10,29 +10,37 @@ module.exports = {
 };
 
 function find() {
-    return db('choreTasks').select('id', 'choreName', 'choreType', 'description', 'basePoints', 'bonusPoints', 'dueDate', 'picture', 'completed');
+    return db('chores')
+        .select('id', 'choreName', 'description', 'points', 'bonusPoints', 'dueDate', 'picture', 'completed');
 }
 
 function findBy(filter) {
-    return db('choreTasks').where(filter);
+    return db('chores')
+        .where(filter);
 }
 
 async function add(chore) {
-    const [id] = await db('choreTasks').insert(chore);
+    const [id] = await db('chores')
+        .insert(chore);
 
     return findById(id);
 }
 
 function findById(id) {
-    return db('choreTasks')
+    return db('chores')
         .where({ id })
         .first();
 }
 
 function update(id, changes) {
-    return db('choreTasks').where('id', id).update(changes).then(count => (count > 0 ? this.find(id) : null));
+    return db('chores')
+        .where('id', id)
+        .update(changes)
+        .then(count => (count > 0 ? this
+        .find(id) : null));
 }
 
 function remove(id) {
-    return db('choreTasks').where('id', id).del();
+    return db('chores')
+        .where('id', id).del();
 }

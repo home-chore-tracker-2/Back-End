@@ -7,39 +7,50 @@ module.exports = {
     findById,
     update,
     remove,
-    getChildChoreTasks,
+    getChildChores,
 };
 
 function find() {
-    return db('').select('id', 'child_id',);
+    return db('child').select('id', 'username', 'password', 'points', 'cleanStreak');
 }
 
-function getChildChoreTasks(child_id) {
-    return db('')
-        .innerJoin('', '', '=', '.id')
-        .where({  })
+function getChildChores(chore_id) {
+    return db('child')
+        .innerJoin('chores', 'child.chores_id', '=', 'chores.id')
+        .where({ chore_id })
 }
+
+    // .select('sleepLog.date', 'sleepLog.wakeUpRating', 'sleepLog.dayRating', 'sleepLog.nightRating')
+    // .join('users as u', 'u.id', 'sleepLog.user_id')
+    // .where({user_id: id})
+
 
 function findBy(filter) {
-    return db('').where(filter);
+    return db('child')
+        .where(filter);
 }
 
-async function add(menuItem) {
-    const [id] = await db('').insert(menuItem);
+async function add(child) {
+    const [id] = await db('child').insert(child);
 
     return findById(id);
 }
 
 function findById(id) {
-    return db('')
+    return db('child')
         .where({ id })
         .first();
 }
 
 function update(id, changes) {
-    return db('').where('id', id).update(changes).then(count => (count > 0 ? this.find(id) : null));
-}
+    return db('child')
+        .where('id', id)
+        .update(changes)
+        .then(count => (count > 0 ? this
+        .find(id) : null));
+    }
 
 function remove(id) {
-    return db('').where('id', id).del();
+    return db('child')
+        .where('id', id).del();
 }
