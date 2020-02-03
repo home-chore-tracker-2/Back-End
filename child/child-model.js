@@ -11,7 +11,7 @@ module.exports = {
 };
 
 function find() {
-    return db('child').select('id', 'username', 'password', 'points', 'cleanStreak');
+    return db('child').select('id', 'username', 'points', 'cleanStreak');
 }
 
 function getChildChores(chore_id) {

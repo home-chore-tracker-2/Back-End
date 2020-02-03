@@ -16,10 +16,8 @@ exports.up = function(knex) {
             .notNullable();
         tbl.text('password')
         tbl.integer('points', 10)
-            .notNullable()
             .unsigned();
-        tbl.boolean('cleanStreak', false)
-        .notNullable();
+        tbl.boolean('cleanStreak', false);
     })
 
     .createTable('chores', tbl => {
