@@ -23,7 +23,7 @@ Users MUST have
 *Child User*
 To register: https://chore-tracker-build.herokuapp.com/api/auth/register/child
 To login: https://chore-tracker-build.herokuapp.com/api/auth/login/child
-
+ 
 *Child users MUST have* 
 'username'
 'password', 
