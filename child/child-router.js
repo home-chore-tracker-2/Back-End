@@ -17,6 +17,18 @@ router.get('/', (req, res) => {
         })
 })
 
+router.get('/:id', (req, res) => {
+    Child.getChildChores(req.params.id)
+    .then(child => { 
+        res.json(child);
+    })
+    .catch(error => {
+        console.log(error);
+        res.status(500).json({ message: 'Error retrieving the child with chores' })
+    })
+})
+
+
 // POST a new Child
 
 router.post('/', (req, res) => {
