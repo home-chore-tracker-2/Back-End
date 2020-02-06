@@ -5,7 +5,7 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('parent_child').insert([
-        { parent_id: '', child_id: ''},
+        { parent_id: 1, child_id: 1 }
       ]);
     });
 };

@@ -6,6 +6,9 @@ const User = require('../user/user-model');
 const Child = require('../child/child-model');
 const secret = require('.././secret.js');
 
+const db = require('../data/dbConfig');
+const authenticate = require('../auth/authenticate-middleware');
+
 // endpoints for /api/auth
 router.post('/register', (req, res) => {
     let user = req.body;
@@ -39,18 +42,32 @@ router.post('/login', (req, res) => {
         });
 });
 
-router.post('/register/child', (req, res) => {
+router.post('/register/child', authenticate, (req, res) => {
     let user = req.body;
+    const connector = { 
+        parent_id: req.token.subject,
+        child_id: 0
+     }
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
+     console.log(req.token)
 
     Child.add(user)
+        .then(saved => {
+            connector.child_id = saved.id
+            console.log(connector)
+        db('parent_child').insert(connector)
         .then(saved => {
             res.status(201).json(saved);
         })
         .catch(error => {
             res.status(500).json(error);
         });
+        })
+        .catch(error => {
+            res.status(500).json(error);
+        });
+        
 });
 
 router.post('/login/child', (req, res) => {
