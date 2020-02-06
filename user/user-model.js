@@ -5,6 +5,7 @@ module.exports = {
     find,
     findBy,
     findById,
+    getUserChild
 };
 
 function find() {
@@ -25,4 +26,12 @@ function findById(id) {
     return db('user')
         .where({ id })
         .first();
+}
+
+function getUserChild(id) {
+    return db('parent_child')
+    .join('user', 'user.id', 'parent_child.parent_id')
+    .join('child', 'child.id', 'parent_child.child_id')
+    .where('parent_child.parent_id', id)
+    .select('child.username', 'child.points', 'child.cleanStreak', 'child.id')
 }
