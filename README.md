@@ -36,19 +36,19 @@ but also have the fields,
 To retrieve a list of all users: https://chore-tracker-build.herokuapp.com/api/user
 
 *User CRUD*
-GET User: https://chore-tracker-build.herokuapp.com/api/user
+-GET User: https://chore-tracker-build.herokuapp.com/api/user
 
 *Child CRUD*
-GET Child Users: https://chore-tracker-build.herokuapp.com/api/child
-POST Child User: https://chore-tracker-build.herokuapp.com/api/child
-PUT Child User: https://chore-tracker-build.herokuapp.com/api/child/:id
-DELETE Child User: https://chore-tracker-build.herokuapp.com/api/child/:id
+-GET Child Users: https://chore-tracker-build.herokuapp.com/api/child
+-POST Child User: https://chore-tracker-build.herokuapp.com/api/child
+-PUT Child User: https://chore-tracker-build.herokuapp.com/api/child/:id
+-DELETE Child User: https://chore-tracker-build.herokuapp.com/api/child/:id
 
 *Chore CRUD*
-GET Chores: https://chore-tracker-build.herokuapp.com/api/chores
-POST Chores: https://chore-tracker-build.herokuapp.com/api/chores
-PUT Chores: https://chore-tracker-build.herokuapp.com/api/chores/:id
-DELETE Chores: https://chore-tracker-build.herokuapp.com/api/chores/:id
+-GET Chores: https://chore-tracker-build.herokuapp.com/api/chores
+-POST Chores: https://chore-tracker-build.herokuapp.com/api/chores
+-PUT Chores: https://chore-tracker-build.herokuapp.com/api/chores/:id
+-DELETE Chores: https://chore-tracker-build.herokuapp.com/api/chores/:id
 
 *Chores MUST have*
 'child_id' (integer)
