@@ -41,7 +41,7 @@ exports.up = function(knex) {
             .unsigned();
         tbl.date('dueDate', 255)
             .notNullable();
-        tbl.string('picture', 255);
+        tbl.binary('picture', 255);
         tbl.boolean('completed', false)
             .notNullable();
     })
